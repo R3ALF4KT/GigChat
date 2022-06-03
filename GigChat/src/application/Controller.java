@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -15,7 +16,7 @@ public class Controller {
 	@FXML
 	public void exit_window(MouseEvent event) {
 		
-		Rectangle thisButton = (Rectangle) event.getSource();
+		Pane thisButton = (Pane) event.getSource();
 		
 		Scene currentScene = (Scene) thisButton.getScene();
 		
@@ -27,7 +28,7 @@ public class Controller {
 
 	@FXML
 	public void screen_window(MouseEvent event) {
-		Rectangle thisButton = (Rectangle) event.getSource();
+		Pane thisButton = (Pane) event.getSource();
 		
 		Scene currentScene = (Scene) thisButton.getScene();
 		
@@ -39,31 +40,29 @@ public class Controller {
 		
 		tabbar.setWidth( currentStage.getWidth() );
 		
-		String[] rectangles = {"#closeButton", "#screenButton", "#minimizeButton"};
+		Pane taskbar = (Pane) currentScene.lookup("#taskbar");
+		taskbar.setLayoutX( currentStage.getWidth() - taskbar.getWidth() );
 		
-		for(int i = 0; i < rectangles.length; ++i) {
-			
-			Rectangle closeButton = (Rectangle) currentScene.lookup(rectangles[i]); 
-			
-			closeButton.setTranslateX( currentStage.getWidth() - closeButton.getWidth() * (i+1) - closeButton.getLayoutX() );
-			
-		}
+		Pane righttab = (Pane) currentScene.lookup("#righttab");
 		
-		String[] images = {"#closeImage", "#screenImage", "#minimizeImage"};
+		righttab.setLayoutX(currentStage.getWidth() - taskbar.getWidth());
 		
-		for(int i = 0; i < images.length; ++i) {
-			
-			ImageView imgButton = (ImageView) currentScene.lookup(images[i]); 
-			
-			System.out.println(imgButton.getFitWidth());
-			
-			imgButton.setTranslateX(currentStage.getWidth() - imgButton.getFitWidth() * (i) - imgButton.getLayoutX());
-		}
+		righttab.setPrefHeight(currentScene.getHeight() - tabbar.getHeight());
+		
+		Pane lefttab = (Pane) currentScene.lookup("#lefttab");
+		
+		lefttab.setPrefHeight(currentScene.getHeight() - tabbar.getHeight());
+		
+		Pane chatBox = (Pane) currentScene.lookup("#chatBox");
+		
+		chatBox.setLayoutY( currentScene.getHeight() - chatBox.getHeight() );
+		chatBox.setPrefWidth( currentScene.getWidth() - righttab.getWidth() - lefttab.getWidth() );
+		
 	}
 
 	@FXML
 	public void minimize_window(MouseEvent event) {
-		Rectangle thisButton = (Rectangle) event.getSource();
+		Pane thisButton = (Pane) event.getSource();
 		
 		Scene currentScene = (Scene) thisButton.getScene();
 		
