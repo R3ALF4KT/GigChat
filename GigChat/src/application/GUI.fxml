@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #505050;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   
+   
+   <children>
+      <Rectangle id="tabbar" fill="#454545" height="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1200.0" />
+      <Text fill="WHITE" layoutX="7.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: MotorBlock;" text="GigChat">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+            <ImageView id="closeImage" fitHeight="44.0" fitWidth="44.0" layoutX="1148.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../bin/application/close-button.png" />
+         </image>
+      </ImageView>
+      <ImageView id="screenImage" fitHeight="44.0" fitWidth="44.0" layoutX="1087.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../bin/application/fullscreen.png" />
+         </image>
+      </ImageView>
+      <Rectangle id="closeButton" fill="#52525200" height="65.0" layoutX="1139.0" onMouseClicked="#exit_window" stroke="#2f2f2f" strokeType="INSIDE" strokeWidth="5.0" width="61.0" />
+      <Rectangle id="screenButton" fill="#52525200" height="65.0" layoutX="1078.0" onMouseClicked="#screen_window" stroke="#2f2f2f" strokeType="INSIDE" strokeWidth="5.0" width="61.0" />
+      <Rectangle id="minimizeButton" fill="#52525200" height="65.0" layoutX="1017.0" onMouseClicked="#minimize_window" stroke="#2f2f2f" strokeType="INSIDE" strokeWidth="5.0" width="61.0" />
+      <ImageView id="minimizeImage" fitHeight="44.0" fitWidth="44.0" layoutX="1026.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../bin/application/minus.png" />
+         </image>
+      </ImageView>
+
+   </children>
+</Pane>
