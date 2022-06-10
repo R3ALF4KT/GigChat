@@ -37,7 +37,9 @@ public class Main extends Application {
 
 			primaryStage.show();
 
-	        showMessage("WWWWWWWWWWWWWWWWWWWWWWWWWWWW".repeat(10));
+			showMessage("W".repeat(20).repeat(20));
+			showMessage("D".repeat(20).repeat(20));
+	        //showMessage("DDDDDDDDDDDDDDDDDDDDDDDDDDDD");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,16 +55,13 @@ public class Main extends Application {
 		messageContents.setPrefHeight(scene.getHeight() / 20);
 		messageContents.setPrefWidth(scene.getWidth() - ((Pane) (scene.lookup("#lefttab"))).getWidth() - ((Pane) (scene.lookup("#righttab"))).getWidth());
 		
-		messageContents.setStyle("-fx-background-color: #202020;");
-		
 		// Text zum Content
 		
 		TextFlow textflow = new TextFlow();
 		
-		textflow.setPrefHeight(messageContents.getPrefHeight());
-		textflow.setPrefWidth(messageContents.getPrefWidth());
+		textflow.setMaxWidth(messageContents.getPrefWidth());
 		
-		textflow.setStyle("-fx-background-color: #281754");
+		textflow.setStyle("-fx-background-color: #202020");
 		
 		Text text = new Text(content);
 		text.setStyle("-fx-fill: #ffffff;");
@@ -72,11 +71,10 @@ public class Main extends Application {
 		messageContents.applyCss();
 		messageContents.layout();
 		
-		System.out.println(text.getHeight());
-		
 		messageContents.getChildren().add(textflow);
 		
-		messageContents.setPrefHeight( textflow.getPrefHeight() );
+		//messageContents.setPrefHeight( textflow.getPrefHeight() );
+
 		
 		MessagesBox.getChildren().add(messageContents);
 		
@@ -84,13 +82,24 @@ public class Main extends Application {
 			
 			int result = 0;
 			
+			Pane messageC = ((Pane) MessagesBox.getChildren().get(i));
+			
 			for(int j = i - 1; j >= 0; j--) {
-				result += ((Pane) MessagesBox.getChildren().get(j)).getPrefHeight();
+				//result += ((Pane) MessagesBox.getChildren().get(j)).getPrefHeight();
+				
+				Text t = ((Text) ((TextFlow) ((Pane) (MessagesBox.getChildren().get(j))).getChildren().get(0)).getChildren().get(0));
+				
+				result += Math.ceil(((Text) ((TextFlow) ((Pane) (MessagesBox.getChildren().get(j))).getChildren().get(0)).getChildren().get(0)).boundsInLocalProperty().getValue().getWidth() 
+						/ 
+						((Pane) MessagesBox.getChildren().get(i)).getPrefWidth()) 
+						* 
+						((Text) ((TextFlow) ((Pane) (MessagesBox.getChildren().get(j))).getChildren().get(0)).getChildren().get(0)).boundsInLocalProperty().getValue().getMaxY();
 				
 				result += 5;
 			}
 			
 			((Pane) (MessagesBox.getChildren().get(i))).setLayoutY(result);
+			//((Pane) (MessagesBox.getChildren().get(i))).setLayoutX(0);
 			
 		}
 		
