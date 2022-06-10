@@ -14,13 +14,13 @@ public class Controller {
 	@FXML
 	public void exit_window(MouseEvent event) {
 		
-		//Pane thisButton = (Pane) event.getSource();
+		Pane thisButton = (Pane) event.getSource();
 		
-		//Scene currentScene = (Scene) thisButton.getScene();
+		Scene currentScene = (Scene) thisButton.getScene();
 		
-		//Stage currentStage = (Stage) currentScene.getWindow();
+		Stage currentStage = (Stage) currentScene.getWindow();
 		
-		//currentStage.close();
+		currentStage.close();
 		
 	}
 
